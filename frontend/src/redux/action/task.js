@@ -25,7 +25,7 @@ const userInfoFromLocalStorage = localStorage.getItem("taskUserInfo")
   ? JSON.parse(localStorage.getItem("taskUserInfo"))
   : null;
 
-const baseUrl = "http://localhost:8800";
+const baseUrl = "https://task-app-backend-2a3h.onrender.com";
 
 export const createTaskAction = (formData) => async (dispatch, state) => {
   dispatch({

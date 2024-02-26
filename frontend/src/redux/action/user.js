@@ -17,7 +17,7 @@ import {
 } from "../constants/user";
 import { toast } from "react-toastify";
 
-const baseUrl = "http://localhost:8800";
+const baseUrl = "https://task-app-backend-2a3h.onrender.com";
 
 const userInfoFromLocalStorage = localStorage.getItem("taskUserInfo")
   ? JSON.parse(localStorage.getItem("taskUserInfo"))

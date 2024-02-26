@@ -9,7 +9,7 @@ import helmet from "helmet";
 import colors from "colors";
 import { dbConnect } from "./config/db.js";
 
-import TaskRouter from "./router/Tasks.js";
+import TaskRouter from './router/tasks.js'
 
 import UserRoute from "./router/user.js";
 
