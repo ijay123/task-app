@@ -30,7 +30,7 @@ if (NODE_ENV === "development") {
 
 // the first position is always the request while the second is the response
 app.use("/users", UserRoute);
-app.use("/Tasks", TaskRouter);
+app.use("/tasks", TaskRouter);
 
 app.get("/", (req, res) => {
   res.status(httpStatus.OK).json({
