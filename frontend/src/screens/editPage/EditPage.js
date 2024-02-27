@@ -47,7 +47,7 @@ const EditPage = () => {
           title: task?.title,
           description: task?.description,
           dueDate: task.dueDate.slice(0, 10),
-          userId: userInfoFromLocalStorage.data?._id,
+          userId: userInfoFromLocalStorage?.data?._id,
         });
       }
     } // Dispatch getTasksAction when the component mounts
@@ -79,7 +79,7 @@ const EditPage = () => {
   };
 
   return (
-    <div className="pt-[80px] min-h-[100%] lg:w-[78vw] bg-[grey] lg:absolute lg:top-[120px] lg:right-0">
+    <div className="pt-[80px] min-h-[100%] lg:w-[78vw] bg-[grey] lg:absolute lg:top-[66px] lg:right-0">
       <form className="lg:w-[35vw] px-[20px] flex flex-col pb-[50px] justify-center m-auto">
         <p className="lg:text-[30px] text-[25px] mb-[30px] font-semibold">Edit Task</p>
         <p>
