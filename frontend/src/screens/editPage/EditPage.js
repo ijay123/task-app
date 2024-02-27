@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteTaskAction,
-  getTasksAction,
-  updateTaskAction,
-} from "../../redux/action/task";
+import { getTasksAction, updateTaskAction } from "../../redux/action/task";
 import { toast } from "react-toastify";
 import {
   GET_TASKS_CLEAR_ERROR,
   UPDATE_TASK_CLEAR_ERROR,
-  DELETE_TASK_CLEAR_ERROR,
 } from "../../redux/constants/task";
 import Spinner from "../../components/Spinner/CustomSpinner";
 import { useParams } from "react-router-dom";
@@ -66,6 +61,9 @@ const EditPage = () => {
 
     if (updateError) {
       toast.error(`Failed to Update Task - ${updateError}`);
+      setTimeout(() => {
+        dispatch({ type: UPDATE_TASK_CLEAR_ERROR });
+      }, 3000);
     }
   }, [error, dispatch, success, updateError]); // This useEffect is dedicated to handling errors
 
@@ -81,7 +79,9 @@ const EditPage = () => {
   return (
     <div className="pt-[80px] min-h-[100%] lg:w-[78vw] bg-[grey] lg:absolute lg:top-[66px] lg:right-0">
       <form className="lg:w-[35vw] px-[20px] flex flex-col pb-[50px] justify-center m-auto">
-        <p className="lg:text-[30px] text-[25px] mb-[30px] font-semibold">Edit Task</p>
+        <p className="lg:text-[30px] text-[25px] mb-[30px] font-semibold">
+          Edit Task
+        </p>
         <p>
           <input
             type="text"
