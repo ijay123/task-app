@@ -54,7 +54,7 @@ const Home = () => {
     dispatch({type: CREATE_TASK_REQUEST})
   };
   return (
-    <div className=" lg:absolute lg:right-0 lg:top-[100px] lg:w-[78vw] flex justify-center">
+    <div className=" lg:absolute lg:right-0 lg:top-[100px] relative lg:w-[78vw] flex justify-center items-center m-auto">
       <form className="lg:w-[40vw] border px-[20px] py-[30px] mt-[100px] lg:mt-[50px] bg-green-100 rounded-[20px]">
         <p className="text-[30px] mb-[30px] font-semibold">Add Task</p>
         <p>
