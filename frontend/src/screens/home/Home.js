@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { CREATE_TASK_CLEAR_ERROR, CREATE_TASK_REQUEST } from "../../redux/constants/task";
+import { CREATE_TASK_CLEAR_ERROR, CREATE_TASK_REQUEST, CREATE_TASK_RESET } from "../../redux/constants/task";
 import { createTaskAction } from "../../redux/action/task";
 import Spinner from "../../components/Spinner/CustomSpinner";
 
@@ -35,6 +35,7 @@ const Home = () => {
       // Directly use navigate function for redirection without setTimeout
       // if immediate redirection is desired. Otherwise, keep setTimeout for delayed redirection.
       setTimeout(() => {
+        dispatch({ type: CREATE_TASK_RESET});
         navigate("/tasks");
       }, 3000); 
     }

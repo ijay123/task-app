@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner/CustomSpinner";
 import { toast } from "react-toastify";
-import { CREATE_USER_CLEAR_ERROR } from "../../redux/constants/user";
+import { CREATE_USER_CLEAR_ERROR, CREATE_USER_RESET } from "../../redux/constants/user";
 import { createUserAction } from "../../redux/action/user";
 
 const SignUp = () => {
@@ -31,6 +31,9 @@ const SignUp = () => {
       toast.success(
         `Welcome, you have succesfully signedup, ${userInfoFromLocalStorage?.data?.username}`
       );
+      setTimeout(() => {
+        dispatch({ type: CREATE_USER_RESET });
+      }, 3000);
     }
 
     if (error) {
