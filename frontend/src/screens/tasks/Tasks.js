@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
@@ -18,11 +18,7 @@ const Tasks = () => {
 
   const {
     getTasks: { tasks, error },
-    deleteTask: {
-      loading: deleteLoading,
-      success: deleteSuccess,
-      error: deleteError,
-    },
+    deleteTask: { success: deleteSuccess, error: deleteError },
   } = useSelector((state) => state);
   console.log(tasks);
 
@@ -33,6 +29,8 @@ const Tasks = () => {
 
     dispatch(getTasksAction());
   }, [dispatch]);
+
+  const [deletingTaskId, setDeletingTaskId] = useState(null);
 
   useEffect(() => {
     if (error) {
@@ -52,14 +50,24 @@ const Tasks = () => {
       }, 3000);
     }
     if (!tasks) {
-      return <div className="absolute top-[150px] right-0 bg-[blue]">Empty TodoList</div>;
+      return (
+        <div className="absolute top-[150px] right-0 bg-[blue]">
+          Empty TodoList
+        </div>
+      );
     }
-  }, [error, dispatch, deleteError, deleteSuccess, tasks]); // This useEffect is dedicated to handling errors
+  }, [error, dispatch, deleteError, deleteSuccess, tasks]);
 
   const handleDelete = (id) => {
-    // Confirmation before delete
     if (window.confirm("Are you sure you want to delete this task?")) {
-      dispatch(deleteTaskAction(id));
+      setDeletingTaskId(id);
+      dispatch(deleteTaskAction(id))
+        .then(() => {
+          setDeletingTaskId(null);
+        })
+        .catch(() => {
+          setDeletingTaskId(null);
+        });
     }
   };
 
@@ -82,13 +90,12 @@ const Tasks = () => {
                 >
                   <CiEdit />
                 </Link>
-                {deleteLoading ? (
+                {deletingTaskId === task._id ? (
                   <span className="w-[30px]">
                     <Spinner />
                   </span>
                 ) : (
                   <div className="border rounded-[50%] text-white bg-[green] p-[5px]">
-                    {" "}
                     <MdDeleteOutline onClick={() => handleDelete(task._id)} />
                   </div>
                 )}

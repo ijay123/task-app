@@ -78,7 +78,7 @@ export const getTaskAction = () => async (dispatch, state) => {
       type: GET_TASK_REQUEST,
     });
     // make the call
-    const { data } = await axios.get(`${baseUrl}/task`, config);
+    const { data } = await axios.get(`${baseUrl}/tasks`, config);
     console.log(data, "data");
     //if we get here, then request is a success case
     dispatch({

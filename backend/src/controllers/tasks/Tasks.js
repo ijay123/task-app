@@ -1,5 +1,6 @@
 import TaskModel from "../../model/task/TaskList.js";
-import httpStatus from "http-status";import { paginate } from "../../util/paginate.js";
+import httpStatus from "http-status";
+import { paginate } from "../../util/paginate.js";
 
 const createTask = async (req, res) => {
   //collect the data from req body
@@ -49,8 +50,6 @@ const getTasks = async (req, res) => {
     data: getTask,
   });
 };
-
-
 
 // updated Task
 
